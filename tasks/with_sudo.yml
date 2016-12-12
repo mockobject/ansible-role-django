@@ -15,8 +15,8 @@
     merge: '{{item.merge|default(omit)}}'
     skip: '{{item.skip|default(omit)}}'
   with_items: django_pre_commands
-  sudo: yes
-  sudo_user: '{{django_user}}'
+  become: yes
+  become_user: '{{django_user}}'
 
 - name: run main django commands with sudo
   django_manage:
@@ -33,8 +33,8 @@
     merge: '{{item.merge|default(omit)}}'
     skip: '{{item.skip|default(omit)}}'
   with_items: django_main_commands
-  sudo: yes
-  sudo_user: '{{django_user}}'
+  become: yes
+  become_user: '{{django_user}}'
 
 - name: run django post commands with sudo
   django_manage:
@@ -51,5 +51,5 @@
     merge: '{{item.merge|default(omit)}}'
     skip: '{{item.skip|default(omit)}}'
   with_items: django_post_commands
-  sudo: yes
-  sudo_user: '{{django_user}}'
+  become: yes
+  become_user: '{{django_user}}'
